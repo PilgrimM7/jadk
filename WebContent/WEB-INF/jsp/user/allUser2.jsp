@@ -24,19 +24,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript"> 
 $('#table').bootstrapTable({
-    url: 'data/data1.json',
+    url: 'user/list',
     columns: [{
-        field: 'id',
-        title: 'Item ID'
-    }, {
         field: 'name',
-        title: 'Item Name'
+        title: '姓名'
     }, {
-        field: 'price',
-        title: 'Item Price'
+        field: 'age',
+        title: '年龄'
     }, ],
     striped: true,
-    pagination: true
+    pagination: true,
+    sidePagination: 'server'
 });
 </script>
 </body>

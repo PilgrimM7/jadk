@@ -20,8 +20,8 @@ public class JqGridController {
 		return "/frontend/jqGrid/index";
 	}
 	
-	@RequestMapping("/list")
 	@ResponseBody
+	@RequestMapping("/list")
 	public Map<String, Object> list(HttpServletRequest request) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();

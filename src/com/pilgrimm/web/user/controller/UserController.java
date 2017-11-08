@@ -2,7 +2,9 @@ package com.pilgrimm.web.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pilgrimm.core.util.SpringUtil;
 import com.pilgrimm.web.user.model.User;
@@ -46,7 +49,7 @@ public class UserController {
 		UserService us = (UserService) SpringUtil.getBeanByName("userService");
 		System.out.println(us);
 		
-		return "/user/allUser";
+		return "/user/allUser2";
 	}
 
 	/**
@@ -132,6 +135,21 @@ public class UserController {
 			e.printStackTrace();
 		}
 
+	}
+	
+	/**
+	 * 获取所有用户列表
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/list")
+	public Map<String, Object> list(HttpServletRequest request) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		List<User> list = userService.findAll();
+		result.put("rows", list);
+		return result;
 	}
 
 }
