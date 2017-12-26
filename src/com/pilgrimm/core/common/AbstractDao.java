@@ -1,4 +1,4 @@
-package com.pilgrimm.core.springjdbc;
+package com.pilgrimm.core.common;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.springframework.jdbc.support.KeyHolder;
 
 /**
  * Abstract jdbc dao template In order to assist JDBC processing.
+ * @param <T>
  */
 public abstract class AbstractDao {
 
@@ -79,7 +80,7 @@ public abstract class AbstractDao {
 		return namedParameterJdbcTemplate.queryForMap(sql, paramSource);
 	}
 	
-	protected int queryForTotal(String sql, Map<String, Object> paramMap) {
+	protected long queryForTotal(String sql, Map<String, Object> paramMap) {
 		StringBuffer bufferSql = new StringBuffer();
 		bufferSql.append("select count(*) from (");
 		bufferSql.append(sql);
@@ -88,13 +89,19 @@ public abstract class AbstractDao {
 				paramMap, Integer.class);
 	}
 
-	protected int queryForTotal(String sql, SqlParameterSource paramSource) {
+	protected long queryForTotal(String sql, SqlParameterSource paramSource) {
 		StringBuffer bufferSql = new StringBuffer();
 		bufferSql.append("select count(*) from (");
 		bufferSql.append(sql);
 		bufferSql.append(") c");
 		return namedParameterJdbcTemplate.queryForObject(bufferSql.toString(),
 				paramSource, Integer.class);
+	}
+	
+	protected Map<String, Object> queryForPageMap(
+			PageSqlEntry pageSqlEntry, Map<String, Object> paramMap,
+			PageResultGenerator<?> pageResultGenerator) {
+		return pageResultGenerator.pageMap(pageSqlEntry, paramMap);
 	}
 
 	protected List<Map<String, Object>> queryForList(String sql,

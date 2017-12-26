@@ -14,13 +14,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pilgrimm.core.common.AbstractController;
 import com.pilgrimm.core.util.SpringUtil;
+import com.pilgrimm.core.validate.DefaultValidate;
+import com.pilgrimm.core.validate.Validate;
 import com.pilgrimm.web.user.model.User;
 import com.pilgrimm.web.user.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends AbstractController {
 
 	@Autowired
 	private UserService userService;
@@ -149,6 +152,48 @@ public class UserController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		List<User> list = userService.findAll();
 		result.put("rows", list);
+		return result;
+	}
+	
+	/**
+	 * 获取所有用户列表
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/queryForList")
+	public Map<String, Object> queryForList(HttpServletRequest request) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		List<User> list = userService.findAll();
+		result.put("rows", list);
+		return result;
+	}
+	
+	/**
+	 * 列表页 
+	 */
+	@RequestMapping("/index")
+	public String index() {
+		return "/user/index";
+	}
+	
+	/**
+	 * 获取分页数据
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/queryForPage")
+	public Map<String, Object> queryForPage(HttpServletRequest request) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		try {
+			Map<String, Object> paramMap = read(request, new DefaultValidate());
+			result = userService.queryForPage(paramMap);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 

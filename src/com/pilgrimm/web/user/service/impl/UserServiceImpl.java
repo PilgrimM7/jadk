@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.pilgrimm.web.user.dao.UserDao;
 import com.pilgrimm.web.user.mapper.UserMapper;
 import com.pilgrimm.web.user.model.User;
 import com.pilgrimm.web.user.service.UserService;
-import com.pilgrimm.web.usersj.dao.UserSjDao;
 
 @Service("userService")
 @Transactional
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
 	
 	@Autowired
-	private UserSjDao usersjDao;
+	private UserDao userDao;
 
 	@Override
 	public void save(User user) {
@@ -66,9 +66,14 @@ public class UserServiceImpl implements UserService {
 //		Map<String, Object> map2 = new HashMap<String, Object>();
 //		map2.put("name", "dd");
 //
-//		usersjDao.update(map1);
+//		userDao.update(map1);
 //		"".substring(1);
-//		usersjDao.update(map2);
+//		userDao.update(map2);
+	}
+
+	@Override
+	public Map<String, Object> queryForPage(Map<String, Object> paramMap) {
+		return userDao.queryForPage(paramMap);
 	}
 
 }
