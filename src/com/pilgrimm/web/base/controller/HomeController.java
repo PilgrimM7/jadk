@@ -21,8 +21,16 @@ public class HomeController extends AbstractController {
 	 * 列表页 
 	 */
 	@RequestMapping("/metronic/index")
-	public String index() {
+	public String index2() {
 		return "/home/metronic/index";
+	}
+	
+	/**
+	 * 列表页 
+	 */
+	@RequestMapping("/hplus/index")
+	public String index() {
+		return "/home/hplus/index";
 	}
 
 }

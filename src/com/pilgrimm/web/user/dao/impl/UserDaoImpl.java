@@ -2,11 +2,13 @@ package com.pilgrimm.web.user.dao.impl;
 
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import com.pilgrimm.core.common.AbstractDao;
 import com.pilgrimm.core.common.DefaultPageResultGenerator;
 import com.pilgrimm.core.common.MysqlPageSqlEntry;
+import com.pilgrimm.core.util.ParamUtil;
 import com.pilgrimm.web.user.dao.UserDao;
 import com.pilgrimm.web.user.model.User;
 
@@ -19,7 +21,12 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 	}
 	
 	public Map<String, Object> queryForPage(Map<String, Object> paramMap) {
+		String name = ParamUtil.getString(paramMap, "name");
+		
 		String sql = "SELECT * FROM t_user WHERE 1=1";
+		if (StringUtils.isNotEmpty(name)) {
+			sql += " AND name LIKE '%" + name + "%'";
+		}
 		return queryForPageMap(new MysqlPageSqlEntry(sql), paramMap, 
 				new DefaultPageResultGenerator<User>(this));
 	}
