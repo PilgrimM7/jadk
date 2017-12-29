@@ -8,13 +8,21 @@ import com.pilgrimm.core.common.AbstractController;
 @Controller
 @RequestMapping("/home")
 public class HomeController extends AbstractController {
+	
+	/**
+	 * 主页
+	 */
+	@RequestMapping("/index")
+	public String index() {
+		return "/home/index";
+	}
 
 	/**
 	 * 列表页 
 	 */
-	@RequestMapping("/workplate")
+	@RequestMapping("/adminlte/workplate")
 	public String workplate() {
-		return "/home/workplate";
+		return "/home/adminlte/workplate";
 	}
 	
 	/**
@@ -29,7 +37,7 @@ public class HomeController extends AbstractController {
 	 * 列表页 
 	 */
 	@RequestMapping("/hplus/index")
-	public String index() {
+	public String index3() {
 		return "/home/hplus/index";
 	}
 
