@@ -1,4 +1,4 @@
-package com.pilgrimm.web.controller;
+package com.pilgrimm.web.func.controller;
 
 import java.io.InputStream;
 import java.util.List;
@@ -15,12 +15,12 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.pilgrimm.core.util.mt.ExcelUtil;
 
 @Controller
-@RequestMapping("/excel")
+@RequestMapping("/func/excel")
 public class ExcelController {
 	
-	@RequestMapping("/main")
-	public String main() {
-		return "/excel";
+	@RequestMapping("/index")
+	public String index() {
+		return "/func/excel/index";
 	}
 	
 	/**

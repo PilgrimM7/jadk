@@ -61,6 +61,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">功能模块</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="func/excel/index">excel</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>
