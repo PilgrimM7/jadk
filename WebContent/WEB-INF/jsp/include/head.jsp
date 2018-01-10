@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="plugins/common/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="plugins/common/metronic/assets/global/css/components.min.css" rel="stylesheet" type="text/css" />
-<link href="plugins/common/hplus/css/style.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/common/css/style.css" rel="stylesheet" type="text/css">
 <script src="plugins/jquery-1.12.4.min.js" type="text/javascript"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="plugins/common/metronic/assets/global/scripts/app.min.js" type="text/javascript"></script>
