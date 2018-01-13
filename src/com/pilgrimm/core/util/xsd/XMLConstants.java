@@ -3,7 +3,7 @@ package com.pilgrimm.core.util.xsd;
 public class XMLConstants {
 
 	// 默认数据节点，设置为空则认为根目录为默认数据节点
-	public static final String MESSAGE = "GCJS_QUALIFI_PRE_CLARI";
+	public static final String MESSAGE = "feature";
 
 	// xml编码
 	public static final String ENCODING = "UTF-8";
@@ -12,7 +12,7 @@ public class XMLConstants {
 	public static final String XSD_DEFAULT_NAMESPACE = "xs";
 
 	// xsd定义的默认数据节点，设置为空则认为根目录为默认数据节点
-	public static final String XSD_DEFAULT_DATANODE = "GCJS_SECTION";
+	public static final String XSD_DEFAULT_DATANODE = "feature";
 
 	// xsd复合类型节点
 	public static final String XSD_COMPLEX_TYPE = "complexType";

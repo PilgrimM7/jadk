@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:element name="Features">
+	<xs:element name="feature">
 		<xs:annotation>
 			<xs:documentation>QueryChange</xs:documentation>
 		</xs:annotation>

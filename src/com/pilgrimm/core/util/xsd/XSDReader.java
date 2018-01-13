@@ -209,47 +209,12 @@ public class XSDReader {
 			String realPath = XSDReader.class.getResource("/").getPath();
 			XSDReader xsdReader = new XSDReader();
 
-//			List<XSDNode> nodes = xsdReader.paserXSD("E:/大同公共资源交易/对接/Schema - V2.13 - 2017年9月27日/feature.xsd");
 			List<XSDNode> nodes = xsdReader.paserXSD(realPath+"/"+XMLConstants.MESSAGE+".xsd");
 
-			System.out.println("/**");
-			System.out.println(" * @description  ");
-			System.out.println(" * @return String 返回类型");
-			System.out.println(" */");
-			System.out.println("public int push" + XMLConstants.MESSAGE + "(Date startAt, Date endAt, int NUMBER) {");
-			System.out.println("int id = ReqUtils.getInt(request, \"id\");");
-			System.out.println("JsgcProject entity = jsgcProjectService.dtl(id);");
-			System.out.println("String XMLCONTENT = entityToXml"+ XMLConstants.MESSAGE +"(entity);");
-			System.out.println("ReceiveResponse response = receiveInfo(\""+ XMLConstants.MESSAGE +"\", XMLCONTENT);");
-			System.out.println("}");
-			System.out.println();
-			
-			System.out.println("/**");
-			System.out.println(" * @description  ");
-			System.out.println(" * @return String 返回类型");
-			System.out.println(" */");
-			System.out.println("public String entityToXml"+ XMLConstants.MESSAGE +"(Entity entity, Map<String, Object> map) {");
-			System.out.println("StringBuilder builder = new StringBuilder(\"<?xml version=\\\"1.0\\\" encoding=\\\"utf-8\\\"?>\");");
-			System.out.println("builder.append(\"<"+ XMLConstants.MESSAGE +">\");");
-			System.out.println();
 			for (XSDNode node : nodes) {
-				System.out.println("/** " + node.getAnnotation() + " */");
-				if (node.getName().equals("PLATFORM_CODE")) {
-					System.out.println("builder.append(\"<" + node.getName() + ">\" + PLATFORM_CODE + \"</" + node.getName() + ">\");");
-				} else if (node.getName().equals("PUB_SERVICE_PLAT_CODE")) {
-					System.out.println("builder.append(\"<" + node.getName() + ">\" + PUB_SERVICE_PLAT_CODE + \"</" + node.getName() + ">\");");
-				} else if (node.getName().equals("DATA_TIMESTAMP")) {
-					System.out.println("builder.append(\"<" + node.getName() + ">\" + DateUtils.format(new Date(), \"yyyyMMddHHmmss\") + \"</" + node.getName() + ">\");");
-				} else {
-					System.out.println("builder.append(\"<" + node.getName() + ">\" + entity.get + \"</" + node.getName() + ">\");");
-				}
+				System.out.println(node.getAnnotation());
+				System.out.println(node.getName());
 			}
-			System.out.println();
-			System.out.println("builder.append(\"</"+ XMLConstants.MESSAGE +">\");");
-			System.out.println();
-			System.out.println("return builder.toString();");
-			System.out.println("}");
-
 		} catch (Exception ex) {
 
 			ex.printStackTrace();
