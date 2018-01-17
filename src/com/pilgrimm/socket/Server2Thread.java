@@ -21,7 +21,7 @@ public class Server2Thread implements Runnable {
 		try {
 			// 获取一个输入流，用来读取客户端所发送的登录信息
 			InputStream is = client.getInputStream();// 字节输入流
-			InputStreamReader isr = new InputStreamReader(is);// 将字节流转为
+			InputStreamReader isr = new InputStreamReader(is, "GBK");// 将字节流转为
 			BufferedReader br = new BufferedReader(isr);// 为输入流添加缓冲
 
 			String info = null;
@@ -34,42 +34,212 @@ public class Server2Thread implements Runnable {
 			OutputStream os = client.getOutputStream();
 			PrintWriter pw = new PrintWriter(os);// 包装打印流
 			
-			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
-    				+ "<TransCode>1</TransCode>"
-    				+ "<TransDate>2</TransDate>"
-    				+ "<TransTime>3</TransTime>"
-    				+ "<SeqNo>4</SeqNo>"
-    				+ "<Result>5</Result>"
-    				+ "<AddWord>6</AddWord>"
-    				+ "<itemcnt>7</itemcnt>"
-    				
-    				+ "<item>"
-    					+ "<InDate>11</InDate>"
-    					+ "<InTime>12</InTime>"
-    					+ "<InAmount>13</InAmount>"
-    					+ "<AccName>14</AccName>"
-    					+ "<AccAcct>15</AccAcct>"
-    					+ "<AccBank>16</AccBank>"
-    					+ "<OpeningBank>17</OpeningBank>"
-    					+ "<InMemo>18</InMemo>"
-    					+ "<HstSeqNum>19</HstSeqNum>"
-    				+ "</item>"
-    					
-    				+ "<item>"
-    					+ "<InDate>21</InDate>"
-    					+ "<InTime>22</InTime>"
-    					+ "<InAmount>23</InAmount>"
-    					+ "<AccName>24</AccName>"
-    					+ "<AccAcct>25</AccAcct>"
-    					+ "<AccBank>26</AccBank>"
-    					+ "<OpeningBank>27</OpeningBank>"
-    					+ "<InMemo>28</InMemo>"
-    					+ "<HstSeqNum>29</HstSeqNum>"
-    				+ "</item>"
-    				
-    				+ "</bzjpkg>");
-            pw.write(sb.toString());
+			// 2、入账明细
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//    				+ "<TransCode>1</TransCode>"
+//    				+ "<TransDate>2</TransDate>"
+//    				+ "<TransTime>3</TransTime>"
+//    				+ "<SeqNo>4</SeqNo>"
+//    				+ "<Result>5</Result>"
+//    				+ "<AddWord>6</AddWord>"
+//    				+ "<itemcnt>7</itemcnt>"
+//    				
+//    				+ "<item>"
+//    					+ "<InDate>20180114</InDate>"
+//    					+ "<InTime>120000</InTime>"
+//    					+ "<InAmount>13.00</InAmount>"
+//    					+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//    					+ "<AccAcct>15</AccAcct>"
+//    					+ "<AccBank>16</AccBank>"
+//    					+ "<OpeningBank>17</OpeningBank>"
+//    					+ "<InMemo>18</InMemo>"
+//    					+ "<HstSeqNum>0000000001</HstSeqNum>"
+//    				+ "</item>"
+//    					
+//    				+ "<item>"
+//    					+ "<InDate>20180114</InDate>"
+//    					+ "<InTime>220000</InTime>"
+//    					+ "<InAmount>23.00</InAmount>"
+//    					+ "<AccName>24</AccName>"
+//    					+ "<AccAcct>25</AccAcct>"
+//    					+ "<AccBank>26</AccBank>"
+//    					+ "<OpeningBank>27</OpeningBank>"
+//    					+ "<InMemo>28</InMemo>"
+//    					+ "<HstSeqNum>0000000002</HstSeqNum>"
+//    				+ "</item>"
+//    				
+//    				+ "</bzjpkg>");
 			
+			// 3、单笔入账
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//					+ "<TransCode>1</TransCode>"
+//					+ "<TransDate>2</TransDate>"
+//					+ "<TransTime>3</TransTime>"
+//					+ "<SeqNo>4</SeqNo>"
+//					+ "<Result>5</Result>"
+//					+ "<AddWord>6</AddWord>"
+//					
+//    				+ "<InDate>20180114</InDate>"
+//    				+ "<InTime>120000</InTime>"
+//    				+ "<InAmount>13.00</InAmount>"
+//    				+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//    				+ "<AccAcct>15</AccAcct>"
+//    				+ "<AccBank>16</AccBank>"
+//    				+ "<OpeningBank>17</OpeningBank>"
+//    				+ "<InMemo>18</InMemo>"
+//    				+ "<HstSeqNum>0000000001</HstSeqNum>"
+//    				+ "</bzjpkg>");
+			
+			// 4、保证金退款
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//					+ "<TransCode>1</TransCode>"
+//					+ "<TransDate>20180114</TransDate>"
+//					+ "<TransTime>120000</TransTime>"
+//					+ "<SeqNo>4</SeqNo>"
+//					+ "<Result>5</Result>"
+//					+ "<AddWord>6</AddWord>"
+//					
+//    				+ "<InAcctNo>20180114</InAcctNo>"
+//    				+ "<InName>120000</InName>"
+//    				+ "<HstSeqNum>0000000001</HstSeqNum>"
+//    				+ "</bzjpkg>");
+			
+			// 5、退款明细
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//					+ "<TransCode>1</TransCode>"
+//					+ "<TransDate>20180114</TransDate>"
+//					+ "<TransTime>120000</TransTime>"
+//					+ "<SeqNo>4</SeqNo>"
+//					+ "<Result>5</Result>"
+//					+ "<AddWord>6</AddWord>"
+//					
+//					+ "<itemcnt>7</itemcnt>"
+//					+ "<item>"
+//						+ "<InDate>20180114</InDate>"
+//						+ "<InTime>120000</InTime>"
+//						+ "<InAmount>13.00</InAmount>"
+//						+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//						+ "<AccNo>0000001</AccNo>"
+//						+ "<AccBank>中国农业银行</AccBank>"
+//						+ "<HstSeqNum>0000000001</HstSeqNum>"
+//					+ "</item>"
+//						
+//					+ "<item>"
+//						+ "<InDate>20180114</InDate>"
+//						+ "<InTime>120000</InTime>"
+//						+ "<InAmount>13.00</InAmount>"
+//						+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//						+ "<AccNo>0000001</AccNo>"
+//						+ "<AccBank>中国农业银行</AccBank>"
+//						+ "<HstSeqNum>0000000002</HstSeqNum>"
+//					+ "</item>"
+//						
+//    				+ "</bzjpkg>");
+			
+			// 6、退款单笔明细
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//					+ "<TransCode>1</TransCode>"
+//					+ "<TransDate>2</TransDate>"
+//					+ "<TransTime>3</TransTime>"
+//					+ "<SeqNo>4</SeqNo>"
+//					+ "<Result>5</Result>"
+//					+ "<AddWord>6</AddWord>"
+//					
+//    				+ "<InDate>20180114</InDate>"
+//    				+ "<InTime>120000</InTime>"
+//    				+ "<InAmount>13.00</InAmount>"
+//    				+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//    				+ "<AccNo>15</AccNo>"
+//    				+ "<AccBank>16</AccBank>"
+//    				+ "<HstSeqNum>0000000001</HstSeqNum>"
+//    				+ "</bzjpkg>");
+			
+			// 7、保证金转账
+			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+					+ "<TransCode>1</TransCode>"
+					+ "<TransDate>2</TransDate>"
+					+ "<TransTime>3</TransTime>"
+					+ "<SeqNo>4</SeqNo>"
+					+ "<Result>5</Result>"
+					+ "<AddWord>6</AddWord>"
+					
+    				+ "<InAmount>13.00</InAmount>"
+    				+ "<InName>邢台天丰工程技术有限公司</InName>"
+    				+ "<InAcctNo>15</InAcctNo>"
+    				+ "<AccBank>16</AccBank>"
+    				+ "<HstSeqNum>0000000001</HstSeqNum>"
+    				+ "</bzjpkg>");
+			
+			// 8、全部入账明细
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//    				+ "<TransCode>1</TransCode>"
+//    				+ "<TransDate>2</TransDate>"
+//    				+ "<TransTime>3</TransTime>"
+//    				+ "<SeqNo>4</SeqNo>"
+//    				+ "<Result>5</Result>"
+//    				+ "<AddWord>6</AddWord>"
+//    				+ "<itemcnt>7</itemcnt>"
+//    				
+//    				+ "<item>"
+//    					+ "<InDate>20180114</InDate>"
+//    					+ "<InTime>120000</InTime>"
+//    					+ "<InAmount>13.00</InAmount>"
+//    					+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//    					+ "<AccAcct>15</AccAcct>"
+//    					+ "<AccBank>16</AccBank>"
+//    					+ "<OpeningBank>17</OpeningBank>"
+//    					+ "<InMemo>18</InMemo>"
+//    					+ "<HstSeqNum>0000000001</HstSeqNum>"
+//    				+ "</item>"
+//    					
+//    				+ "<item>"
+//    					+ "<InDate>20180114</InDate>"
+//    					+ "<InTime>220000</InTime>"
+//    					+ "<InAmount>23.00</InAmount>"
+//    					+ "<AccName>24</AccName>"
+//    					+ "<AccAcct>25</AccAcct>"
+//    					+ "<AccBank>26</AccBank>"
+//    					+ "<OpeningBank>27</OpeningBank>"
+//    					+ "<InMemo>28</InMemo>"
+//    					+ "<HstSeqNum>0000000002</HstSeqNum>"
+//    				+ "</item>"
+//    				
+//    				+ "</bzjpkg>");
+			
+			// 9、全部退费明细
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//					+ "<TransCode>1</TransCode>"
+//					+ "<TransDate>20180114</TransDate>"
+//					+ "<TransTime>120000</TransTime>"
+//					+ "<SeqNo>4</SeqNo>"
+//					+ "<Result>5</Result>"
+//					+ "<AddWord>6</AddWord>"
+//					
+//					+ "<itemcnt>7</itemcnt>"
+//					+ "<item>"
+//						+ "<InDate>20180114</InDate>"
+//						+ "<InTime>120000</InTime>"
+//						+ "<InAmount>13.00</InAmount>"
+//						+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//						+ "<AccNo>0000001</AccNo>"
+//						+ "<AccBank>中国农业银行</AccBank>"
+//						+ "<HstSeqNum>0000000001</HstSeqNum>"
+//					+ "</item>"
+//						
+//					+ "<item>"
+//						+ "<InDate>20180114</InDate>"
+//						+ "<InTime>120000</InTime>"
+//						+ "<InAmount>13.00</InAmount>"
+//						+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+//						+ "<AccNo>0000001</AccNo>"
+//						+ "<AccBank>中国农业银行</AccBank>"
+//						+ "<HstSeqNum>0000000002</HstSeqNum>"
+//					+ "</item>"
+//						
+//    				+ "</bzjpkg>");
+			
+            
+			pw.write(sb.toString());
 //			pw.write("好的，我收到消息了，你可以出去玩了");
 			pw.flush();
 			client.shutdownOutput();
