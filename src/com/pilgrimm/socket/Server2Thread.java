@@ -71,24 +71,24 @@ public class Server2Thread implements Runnable {
 //    				+ "</bzjpkg>");
 			
 			// 3、单笔入账
-//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
-//					+ "<TransCode>1</TransCode>"
-//					+ "<TransDate>2</TransDate>"
-//					+ "<TransTime>3</TransTime>"
-//					+ "<SeqNo>4</SeqNo>"
-//					+ "<Result>5</Result>"
-//					+ "<AddWord>6</AddWord>"
-//					
-//    				+ "<InDate>20180114</InDate>"
-//    				+ "<InTime>120000</InTime>"
-//    				+ "<InAmount>13.00</InAmount>"
-//    				+ "<AccName>邢台天丰工程技术有限公司</AccName>"
-//    				+ "<AccAcct>15</AccAcct>"
-//    				+ "<AccBank>16</AccBank>"
-//    				+ "<OpeningBank>17</OpeningBank>"
-//    				+ "<InMemo>18</InMemo>"
-//    				+ "<HstSeqNum>0000000001</HstSeqNum>"
-//    				+ "</bzjpkg>");
+			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+					+ "<TransCode>1</TransCode>"
+					+ "<TransDate>2</TransDate>"
+					+ "<TransTime>3</TransTime>"
+					+ "<SeqNo>4</SeqNo>"
+					+ "<Result>5</Result>"
+					+ "<AddWord>6</AddWord>"
+					
+    				+ "<InDate>20180114</InDate>"
+    				+ "<InTime>120000</InTime>"
+    				+ "<InAmount>13.00</InAmount>"
+    				+ "<AccName>邢台天丰工程技术有限公司</AccName>"
+    				+ "<AccAcct>15</AccAcct>"
+    				+ "<AccBank>16</AccBank>"
+    				+ "<OpeningBank>17</OpeningBank>"
+    				+ "<InMemo>18</InMemo>"
+    				+ "<HstSeqNum>0000000001</HstSeqNum>"
+    				+ "</bzjpkg>");
 			
 			// 4、保证金退款
 //			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
@@ -155,20 +155,20 @@ public class Server2Thread implements Runnable {
 //    				+ "</bzjpkg>");
 			
 			// 7、保证金转账
-			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
-					+ "<TransCode>1</TransCode>"
-					+ "<TransDate>2</TransDate>"
-					+ "<TransTime>3</TransTime>"
-					+ "<SeqNo>4</SeqNo>"
-					+ "<Result>5</Result>"
-					+ "<AddWord>6</AddWord>"
-					
-    				+ "<InAmount>13.00</InAmount>"
-    				+ "<InName>邢台天丰工程技术有限公司</InName>"
-    				+ "<InAcctNo>15</InAcctNo>"
-    				+ "<AccBank>16</AccBank>"
-    				+ "<HstSeqNum>0000000001</HstSeqNum>"
-    				+ "</bzjpkg>");
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//					+ "<TransCode>1</TransCode>"
+//					+ "<TransDate>2</TransDate>"
+//					+ "<TransTime>3</TransTime>"
+//					+ "<SeqNo>4</SeqNo>"
+//					+ "<Result>5</Result>"
+//					+ "<AddWord>6</AddWord>"
+//					
+//    				+ "<InAmount>13.00</InAmount>"
+//    				+ "<InName>邢台天丰工程技术有限公司</InName>"
+//    				+ "<InAcctNo>15</InAcctNo>"
+//    				+ "<AccBank>16</AccBank>"
+//    				+ "<HstSeqNum>0000000001</HstSeqNum>"
+//    				+ "</bzjpkg>");
 			
 			// 8、全部入账明细
 //			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"

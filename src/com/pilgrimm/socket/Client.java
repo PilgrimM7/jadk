@@ -19,7 +19,35 @@ public class Client {
 			// 2.客户端向服务器发送登录信息
             OutputStream os = client.getOutputStream();// 字节输出流
             PrintWriter pw = new PrintWriter(os);
-            pw.write("用户名: admin;密码：123");
+            
+            // 1、保证金到账
+//			StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+//					+ "<TransCode>3001</TransCode>"
+//					+ "<TransDate>2</TransDate>"
+//					+ "<TransTime>3</TransTime>"
+//					+ "<SeqNo>4</SeqNo>"
+//					+ "<AccNo>5</AccNo>"
+//					+ "<AccName>6</AccName>"
+//					+ "<AccBank>16</AccBank>"
+//	 				+ "<InAmount>13.00</InAmount>"
+//	 				+ "<InDate>20180114</InDate>"
+//    				+ "<InTime>120000</InTime>"
+//    				+ "<HstSeqNum>0000000001</HstSeqNum>"
+//	 				+ "<Abstract>邢台天丰工程技术有限公司</Abstract>"
+//	 				+ "<Remark>Z1305001600061011-001</Remark>"
+//	 				+ "</bzjpkg>");
+//            pw.write(sb.toString());
+            
+            // 10、保证金对账
+            StringBuffer sb = new StringBuffer("<?xml version=\"1.0\" encoding=\"utf-8\"?><bzjpkg>"
+            		+ "<TransCode>3012</TransCode>"
+            		+ "<TransDate>2</TransDate>"
+            		+ "<TransTime>3</TransTime>"
+            		+ "<SeqNo>4</SeqNo>"
+            		+ "<filename>duizhang.txt</filename>"
+            		+ "</bzjpkg>");
+            pw.write(sb.toString());
+            
             pw.flush();
             client.shutdownOutput();// 关闭输出流
 
