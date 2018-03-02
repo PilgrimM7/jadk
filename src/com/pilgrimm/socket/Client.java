@@ -43,7 +43,7 @@ public class Client {
             		+ "<TransCode>3012</TransCode>"
             		+ "<TransDate>2</TransDate>"
             		+ "<TransTime>3</TransTime>"
-            		+ "<SeqNo>4</SeqNo>"
+            		+ "<SeqNo></SeqNo>"
             		+ "<filename>duizhang.txt</filename>"
             		+ "</bzjpkg>");
             pw.write(sb.toString());
