@@ -15,10 +15,10 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 
 /**
- * ftp 宸ュ叿绫�
+ * ftp 工具类
  * 
  * @author FeiFeiLi
- * @createdAt 2016骞�11鏈�14鏃�
+ * @date 2016年11月14日
  */
 public class FtpUtils {
 
