@@ -10,9 +10,15 @@
 </head>
 <body>
  
-<select class="select2" style="width: 200px;"name="state">
+<select class="select2" style="width: 200px;" name="state">
   <option value="AL">Alabama</option>
   <option value="WY">Wyoming</option>
+</select>
+
+<select class="js-example-basic-multiple" style="width: 200px;" name="states[]" multiple="multiple">
+    <option value="AL">Alabama</option>
+    ...
+    <option value="WY">Wyoming</option>
 </select>
 
 <script src="../../plugins/jquery-1.12.4.min.js"></script>
@@ -21,6 +27,11 @@
 //In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {
     $('.select2').select2();
+    
+    $('.js-example-basic-multiple').select2();
+    
+    $(".js-example-basic-multiple").val(['AL']).trigger("change");//设置多个值选中
+    
 });
 </script> 
 </body>

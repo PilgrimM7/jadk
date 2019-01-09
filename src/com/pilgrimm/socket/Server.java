@@ -14,7 +14,7 @@ public class Server {
 
         try {
             // 1.创建一个服务器端的 Socket，即 ServerSocket，指定绑定的端，并监听
-            ServerSocket server = new ServerSocket(8888);
+            ServerSocket server = new ServerSocket(8887);
             // 2.调用 accept 方法开始监听，等待客户端连接
             System.out.println("****服务器开始启动，等待客户端上线****");
             Socket socket = server.accept();
@@ -23,11 +23,21 @@ public class Server {
             InputStreamReader isr = new InputStreamReader(is);// 将字节流转为
             BufferedReader br = new BufferedReader(isr);// 为输入流添加缓冲
 
-            String info = null;
-            while ((info = br.readLine()) != null) {
-                System.out.println("我是服务器，客户端说" + info);
+            String content = "";
+            byte buff[] = new byte[1024];
+            int len = is.read(buff);
+            content = new String(buff, 0, len);
+            while (len != -1) {
+            	socket.shutdownInput();// 关闭输入流
+            	break;
             }
-            socket.shutdownInput();// 关闭输入流
+            System.out.println(content);
+            
+            
+//            String info = null;
+//            while ((info = br.readLine()) != null) {
+//                System.out.println("我是服务器，客户端说" + info);
+//            }
 
             // 4.获取输出流
             OutputStream os = socket.getOutputStream();
